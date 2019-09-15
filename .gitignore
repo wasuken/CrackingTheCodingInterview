@@ -1,0 +1,6 @@
+.bloop/
+.ensime_cache/
+.metals/
+project/
+target/
+.ensime
