@@ -71,16 +71,16 @@ public class Chap1Test{
 	public void stringCompressionTest(){
 		Chap1 c = new Chap1();
 		String s1 = "aabcccccaaa";
-		String s1Expected = "a2b1c5a3";
-		assertThat(c.stringCompression(s1), is(s1Expected));
+		String s1Was = "a2b1c5a3";
+		assertThat(c.stringCompression(s1), is(s1Was));
 
 		String s2 = "";
-		String s2Expected = "";
-		assertThat(c.stringCompression(s2), is(s2Expected));
+		String s2Was = "";
+		assertThat(c.stringCompression(s2), is(s2Was));
 
 		String s3 = "a";
-		String s3Expected = "a1";
-		assertThat(c.stringCompression(s3), is(s3Expected));
+		String s3Was = "a1";
+		assertThat(c.stringCompression(s3), is(s3Was));
 	}
 	@Test
 	public void spinMatrixTest(){
@@ -88,23 +88,56 @@ public class Chap1Test{
 		int[][] matrix1 = {{1,2,3},
 						  {4,5,6},
 						  {7,8,9}};
-		int[][] matrixExpected1 = {{7,4,1}, {8,5,2},{9,6,3}};
-		assertThat(c.spinMatrix(matrix1), is(matrixExpected1));
+		int[][] matrixWas1 = {{7,4,1}, {8,5,2},{9,6,3}};
+		assertThat(c.spinMatrix(matrix1), is(matrixWas1));
 
 		int[][] matrix2 = {{1,1,1,1},
 						   {2,2,2,2},
 						   {3,3,3,3},
 						   {4,4,4,4}};
-		int[][] matrixExpected2 = {{4,3,2,1},
+		int[][] matrixWas2 = {{4,3,2,1},
 								   {4,3,2,1},
 								   {4,3,2,1},
 								   {4,3,2,1}};
 
-		assertThat(c.spinMatrix(matrix2), is(matrixExpected2));
+		assertThat(c.spinMatrix(matrix2), is(matrixWas2));
 	}
 	@Test
-	public void isZeroColAndRowFillZero(){
+	public void isColAndRowFillZeroTest(){
 		Chap1 c = new Chap1();
+		int[][] matrix1 = {{1,2,3},{4,5,6},{7,8,9}};
+		int[][] was1 = {{1,2,3},{4,5,6},{7,8,9}};
+		assertThat(c.isColAndRowFillZero(matrix1), is(was1));
 
+		int[][] matrix2 = {{1,2,0},{4,5,6},{7,8,9}};
+		int[][] was2 = {{0,0,0},{4,5,0},{7,8,0}};
+		assertThat(c.isColAndRowFillZero(matrix2), is(was2));
+
+		int[][] matrix3 = {{1,2,0},{4,0,6},{0,8,9}};
+		int[][] was3 = {{0,0,0},{0,0,0},{0,0,0}};
+		assertThat(c.isColAndRowFillZero(matrix3), is(was3));
+	}
+	@Test
+	public void isSubstringTest(){
+		Chap1 c = new Chap1();
+		assertTrue(c.isSubstring("test", "t"));
+		assertTrue(!c.isSubstring("test", "toooooo"));
+		assertTrue(c.isSubstring("waterbottlewaterbottlewaterbottle", "erbottlewat"));
+	}
+	@Test
+	public void isSpinString(){
+		Chap1 c = new Chap1();
+		String s1 = "test";
+		String e1 = "estt";
+		assertTrue(c.isSpinString(s1, e1));
+
+
+		String s2 = "test";
+		String e2 = "es";
+		assertFalse(c.isSpinString(s2, e2));
+
+		String s3 = "waterbottle";
+		String e3 = "erbottlewat";
+		assertTrue(c.isSpinString(s3, e3));
 	}
 }

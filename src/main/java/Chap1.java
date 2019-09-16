@@ -1,6 +1,6 @@
 package chap1;
 import java.util.*;
-
+import java.util.AbstractMap.SimpleEntry;
 // 自分の回答コード
 
 public class Chap1{
@@ -102,5 +102,47 @@ public class Chap1{
 			}
 		}
 		return resultMatrix;
+	}
+	// 1-8
+	public int[][] isColAndRowFillZero(int[][] matrix){
+		int n = matrix.length;
+		int m = matrix[0].length;
+		int[][] tempMatrix = new int[n][m];
+		for(int i=0;i<n;i++){
+			for(int j=0;j<m;j++){
+				tempMatrix[i][j] = matrix[i][j];
+			}
+		}
+		for(int i=0;i<n;i++){
+			for(int j=0;j<m;j++){
+				if(matrix[i][j] == 0){
+					for(int k=0;k<n;k++){
+						tempMatrix[i][k] = 0;
+					}
+					for(int k=0;k<m;k++){
+						tempMatrix[k][j] = 0;
+					}
+				}
+			}
+		}
+		return tempMatrix;
+	}
+	// 1-9
+	public boolean isSpinString(String target, String part){
+		if(target.length() != part.length()) return false;
+		String targetCat = target + target + target;
+		return isSubstring(targetCat, part);
+	}
+	public boolean isSubstring(String haystack, String needle){
+		int nCnt = 0;
+		for(int i=0;i<haystack.length();i++){
+			if(haystack.toCharArray()[i] == needle.toCharArray()[nCnt]){
+				if(nCnt >= needle.toCharArray().length - 1) return true;
+				nCnt++;
+			}else{
+				nCnt = 0;
+			}
+		}
+		return false;
 	}
 }
