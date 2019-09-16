@@ -12,20 +12,20 @@ public class Chap1Test{
 		String s2 = "abc";		// OK
 		String s3 = "";			// OK
 
-		assertThat(c.noDuplicate(s1), is(false));
-		assertThat(c.noDuplicate(s2), is(true));
-		assertThat(c.noDuplicate(s3), is(true));
+		assertFalse(c.noDuplicate(s1));
+		assertTrue(c.noDuplicate(s2));
+		assertTrue(c.noDuplicate(s3));
 	}
 	@Test
 	public void orderCheckTest(){
 		Chap1 c = new Chap1();
 		String a_1 = "test";
 		String b_1 = "ttes";
-		assertThat(c.orderCheck(a_1, b_1), is(true));
+		assertTrue(c.orderCheck(a_1, b_1));
 
 		String a_2 = "kalsjdfadsjfjs";
 		String b_2 = "lsakdjfdsakfda";
-		assertThat(c.orderCheck(a_2, b_2), is(false));
+		assertFalse(c.orderCheck(a_2, b_2));
 	}
 	@Test
 	public void replaceSpaceTest(){
@@ -53,19 +53,19 @@ public class Chap1Test{
 		Chap1 c = new Chap1();
 		String a_1 = "pale";
 		String b_1 = "ple";
-		assertThat(c.isOneShotEqual(a_1, b_1), is(true));
+		assertTrue(c.isOneShotEqual(a_1, b_1));
 
 		String a_2 = "pales";
 		String b_2 = "pale";
-		assertThat(c.isOneShotEqual(a_2, b_2), is(true));
+		assertTrue(c.isOneShotEqual(a_2, b_2));
 
 		String a_3 = "bale";
 		String b_3 = "pale";
-		assertThat(c.isOneShotEqual(a_3, b_3), is(true));
+		assertTrue(c.isOneShotEqual(a_3, b_3));
 
 		String a_4 = "pale";
 		String b_4 = "bake";
-		assertThat(c.isOneShotEqual(a_4, b_4), is(false));
+		assertFalse(c.isOneShotEqual(a_4, b_4));
 	}
 	@Test
 	public void stringCompressionTest(){
