@@ -58,6 +58,16 @@ public class Chap2Test{
 		resultB = createLinkedList(10,20,30,40,50);
 		assertTrue(equalsLNDatas(c.removeNode(resultA, new LinkedNode(60)), resultB));
 	}
+	@Test
+	public void splitLNTest(){
+		Chap2 c = new Chap2();
+		LinkedNode resultA = createLinkedList(3,5,8,5,10,2,1);
+		LinkedNode resultB = createLinkedList(3,2,1,5,8,5,10);
+		assertTrue(equalsLNDatas(c.splitLN(resultA, 5), resultB));
+		// resultA = createLinkedList(10,20,30,40,50);
+		// resultB = createLinkedList(10,20,30,40,50);
+		// assertTrue(equalsLNDatas(c.splitLN(resultA, 30), resultB));
+	}
 	public LinkedNode createLinkedList(int... datas){
 		LinkedNode n = new LinkedNode(datas[0]);
 		LinkedNode f = n;

@@ -55,4 +55,36 @@ public class Chap2{
 		}
 		return f;
 	}
+	public LinkedNode splitLN(LinkedNode ln, int sepa){
+		LinkedNode left = null;
+		LinkedNode leftFirst = null;
+		LinkedNode right = null;
+		LinkedNode rightFirst = null;
+		LinkedNode current = ln;
+		while(current != null){
+			if(sepa <= current.getData()){
+				if(right == null){
+					right = current.clone();
+					rightFirst = right;
+				}else{
+					right.setNext(current.clone());
+					right = right.getNext();
+				}
+			}else{
+				if(left == null){
+					left = current.clone();
+					leftFirst = left;
+				}else{
+					left.setNext(current.clone());
+					left = left.getNext();
+				}
+			}
+			current = current.getNext();
+		}
+		right.setNext(null);
+		if(left == null) return right;
+		if(right == null) return left;
+		left.setNext(rightFirst);
+		return leftFirst;
+	}
 }
