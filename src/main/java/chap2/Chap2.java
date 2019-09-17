@@ -87,4 +87,44 @@ public class Chap2{
 		left.setNext(rightFirst);
 		return leftFirst;
 	}
+	public LinkedNode lnAdd(LinkedNode a, LinkedNode b){
+		int result = lnToInt(reverseLN(a)) + lnToInt(reverseLN(b));
+		return intToLn(result);
+	}
+	public int lnToInt(LinkedNode ln){
+		LinkedNode current = ln;
+		int result = 0;
+		while(current != null){
+			result = result * 10 + current.getData();
+			current = current.getNext();
+		}
+		return result;
+	}
+	public LinkedNode intToLn(int n){
+		int i = n;
+		LinkedNode ln = null;
+		LinkedNode lnFirst = null;
+		while(n >= 0){
+			if(n >= 10){
+				int one = n % 10;
+				if(ln == null){
+					ln = new LinkedNode(one);
+					if(lnFirst == null) lnFirst = ln;
+				}else{
+					ln.setNext(new LinkedNode(one));
+					ln = ln.getNext();
+				}
+				n = (n - one) / 10;
+			}else{
+				if(ln == null){
+					ln = new LinkedNode(n);
+					if(lnFirst == null) lnFirst = ln;
+				}else{
+					ln.setNext(new LinkedNode(n));
+				}
+				n = -1;
+			}
+		}
+		return reverseLN(lnFirst);
+	}
 }

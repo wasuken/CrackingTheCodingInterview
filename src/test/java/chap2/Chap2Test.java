@@ -64,9 +64,31 @@ public class Chap2Test{
 		LinkedNode resultA = createLinkedList(3,5,8,5,10,2,1);
 		LinkedNode resultB = createLinkedList(3,2,1,5,8,5,10);
 		assertTrue(equalsLNDatas(c.splitLN(resultA, 5), resultB));
-		// resultA = createLinkedList(10,20,30,40,50);
-		// resultB = createLinkedList(10,20,30,40,50);
-		// assertTrue(equalsLNDatas(c.splitLN(resultA, 30), resultB));
+		resultA = createLinkedList(10,20,30,40,50);
+		resultB = createLinkedList(10,20,30,40,50);
+		assertTrue(equalsLNDatas(c.splitLN(resultA, 30), resultB));
+	}
+	@Test
+	public void lnAddTest(){
+		Chap2 c = new Chap2();
+		LinkedNode resultA = createLinkedList(7,1,6);
+		LinkedNode resultB = createLinkedList(5,9,2);
+		LinkedNode resultC = createLinkedList(9,1,2);
+		assertTrue(equalsLNDatas(c.lnAdd(resultA, resultB), resultC));
+	}
+	@Test
+	public void intToLnTest(){
+		Chap2 c = new Chap2();
+		int i = 716;
+		assertTrue(equalsLNDatas(c.intToLn(i), createLinkedList(7,1,6)));
+	}
+	@Test
+	public void lnToIntTest(){
+		Chap2 c = new Chap2();
+		LinkedNode resultA = createLinkedList(7,1,6);
+		assertThat(c.lnToInt(resultA), is(716));
+		resultA = createLinkedList(7);
+		assertThat(c.lnToInt(resultA), is(7));
 	}
 	public LinkedNode createLinkedList(int... datas){
 		LinkedNode n = new LinkedNode(datas[0]);
