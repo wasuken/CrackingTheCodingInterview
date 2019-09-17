@@ -150,4 +150,17 @@ public class Chap2{
 		}
 		return null;
 	}
+	public boolean isLoop(LinkedNode ln){
+		HashSet<LinkedNode> table = new HashSet<LinkedNode>();
+		LinkedNode current = ln;
+		while(ln.getNext() != null){
+			if(table.contains(ln)){
+				return true;
+			}else{
+				table.add(ln);
+			}
+			ln = ln.getNext();
+		}
+		return false;
+	}
 }

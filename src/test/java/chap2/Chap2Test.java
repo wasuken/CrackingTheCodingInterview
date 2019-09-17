@@ -116,6 +116,17 @@ public class Chap2Test{
 		ln1.setNext(ln2);
 		assertTrue((c.commonNode(ln1, ln3) == null));
 	}
+	@Test
+	public void isLoopTest(){
+		Chap2 c = new Chap2();
+		LinkedNode ln1 = createLinkedList(1,2,3,4,5);
+		ln1.lastNode().setNext(ln1);
+		assertTrue(c.isLoop(ln1));
+		ln1 = createLinkedList(1,2,3,4,5);
+		LinkedNode ln2 = createLinkedList(1,2,3,4,5);
+		ln1.lastNode().setNext(ln2);
+		assertFalse(c.isLoop(ln1));
+	}
 	public LinkedNode createLinkedList(int... nums){
 		LinkedNode n = new LinkedNode(nums[0]);
 		LinkedNode f = n;

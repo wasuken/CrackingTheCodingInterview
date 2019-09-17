@@ -46,4 +46,11 @@ public class LinkedNode{
 	public int hashCode(){
 		return java.lang.System.identityHashCode(this);
 	}
+	public LinkedNode lastNode(){
+		LinkedNode ln = this;
+		while(ln.getNext() != null){
+			ln = ln.getNext();
+		}
+		return ln;
+	}
 }
