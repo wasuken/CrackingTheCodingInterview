@@ -73,8 +73,16 @@ public class Chap2Test{
 		Chap2 c = new Chap2();
 		LinkedNode resultA = createLinkedList(7,1,6);
 		LinkedNode resultB = createLinkedList(5,9,2);
-		LinkedNode resultC = createLinkedList(9,1,2);
+		LinkedNode resultC = createLinkedList(2,1,9);
 		assertTrue(equalsLNDatas(c.lnAdd(resultA, resultB), resultC));
+	}
+	@Test
+	public void lnStraightAddTest(){
+		Chap2 c = new Chap2();
+		LinkedNode resultA = createLinkedList(6,1,7);
+		LinkedNode resultB = createLinkedList(2,9,5);
+		LinkedNode resultC = createLinkedList(9,1,2);
+		assertTrue(equalsLNDatas(c.lnStraightAdd(resultA, resultB), resultC));
 	}
 	@Test
 	public void intToLnTest(){
@@ -90,10 +98,28 @@ public class Chap2Test{
 		resultA = createLinkedList(7);
 		assertThat(c.lnToInt(resultA), is(7));
 	}
-	public LinkedNode createLinkedList(int... datas){
-		LinkedNode n = new LinkedNode(datas[0]);
+	@Test
+	public void isLnPalindromeTest(){
+		Chap2 c = new Chap2();
+		assertTrue(c.isLnPalidrome(createLinkedList(7,1,7)));
+	}
+	@Test
+	public void commonNodeTest(){
+		Chap2 c = new Chap2();
+		LinkedNode ln1 = createLinkedList(1,2,3,4,5);
+		LinkedNode ln2 = createLinkedList(6,7,8);
+		ln1.setNext(ln2);
+		assertTrue(equalsLNDatas(c.commonNode(ln1, ln2), ln2));
+		ln1 = createLinkedList(1,2,3,4,5);
+		ln2 = createLinkedList(6,7,8);
+		LinkedNode ln3 = createLinkedList(1,2,3);
+		ln1.setNext(ln2);
+		assertTrue((c.commonNode(ln1, ln3) == null));
+	}
+	public LinkedNode createLinkedList(int... nums){
+		LinkedNode n = new LinkedNode(nums[0]);
 		LinkedNode f = n;
-		for(int i:Arrays.copyOfRange(datas, 1, datas.length)){
+		for(int i:Arrays.copyOfRange(nums, 1, nums.length)){
 			n.setNext(new LinkedNode(i));
 			n = n.getNext();
 		}

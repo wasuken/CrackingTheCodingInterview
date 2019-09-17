@@ -1,5 +1,6 @@
 package chap2;
 import java.util.*;
+import java.security.MessageDigest;
 
 public class LinkedNode{
 	private LinkedNode next;
@@ -32,5 +33,17 @@ public class LinkedNode{
 			result += "\n" + this.next.toString();
 		}
 		return result;
+	}
+	public boolean equalsLNDatas(LinkedNode a){
+		LinkedNode b = this;
+		while(b != null){
+			if(b.getData() != b.getData()) return false;
+			a = a.getNext();
+			b = b.getNext();
+		}
+		return !((a == null) && (b != null) || (a != null) && (b == null));
+	}
+	public int hashCode(){
+		return java.lang.System.identityHashCode(this);
 	}
 }

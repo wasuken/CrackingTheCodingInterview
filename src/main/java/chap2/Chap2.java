@@ -89,6 +89,10 @@ public class Chap2{
 	}
 	public LinkedNode lnAdd(LinkedNode a, LinkedNode b){
 		int result = lnToInt(reverseLN(a)) + lnToInt(reverseLN(b));
+		return reverseLN(intToLn(result));
+	}
+	public LinkedNode lnStraightAdd(LinkedNode a, LinkedNode b){
+		int result = lnToInt(a) + lnToInt(b);
 		return intToLn(result);
 	}
 	public int lnToInt(LinkedNode ln){
@@ -126,5 +130,24 @@ public class Chap2{
 			}
 		}
 		return reverseLN(lnFirst);
+	}
+	public boolean isLnPalidrome(LinkedNode ln){
+		return ln.equalsLNDatas(reverseLN(ln));
+	}
+	public LinkedNode commonNode(LinkedNode a, LinkedNode b){
+		HashSet<LinkedNode> table = new HashSet<LinkedNode>();
+		LinkedNode current = a;
+		while(current != null){
+			table.add(current);
+			current = current.getNext();
+		}
+		current = b;
+		while(current != null){
+			if(table.contains(current)){
+				return current;
+			}
+			current = current.getNext();
+		}
+		return null;
 	}
 }
