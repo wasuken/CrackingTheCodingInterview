@@ -51,6 +51,7 @@ public class Chap2{
 				current.setNext(current.getNext().getNext());
 				break;
 			}
+			current = current.getNext();
 		}
 		return f;
 	}

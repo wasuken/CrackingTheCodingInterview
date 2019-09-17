@@ -44,20 +44,19 @@ public class Chap2Test{
 		Chap2 c = new Chap2();
 		LinkedNode resultA = createLinkedList(10,20,30,40,50);
 		LinkedNode resultB = createLinkedList(10,30,40,50);
-		// System.out.println(c.removeNode(resultA, new LinkedNode(20)).toString());
-		// assertTrue(equalsLNDatas(c.removeNode(resultA, new LinkedNode(20)), resultB));
-		// resultA = createLinkedList(10,20,30,40,50);
-		// resultB = createLinkedList(10,20,40,50);
-		// assertTrue(equalsLNDatas(c.removeNode(resultA, new LinkedNode(30)), resultB));
-		// resultA = createLinkedList(10,20,30,40,50);
-		// resultB = createLinkedList(10,20,30,50);
-		// assertTrue(equalsLNDatas(c.removeNode(resultA, new LinkedNode(40)), resultB));
-		// resultA = createLinkedList(10,20,30,40,50);
-		// resultB = createLinkedList(10,20,30,40);
-		// assertTrue(equalsLNDatas(c.removeNode(resultA, new LinkedNode(50)), resultB));
-		// resultA = createLinkedList(10,20,30,40,50);
-		// resultB = createLinkedList(10,20,30,40,50);
-		// assertTrue(equalsLNDatas(c.removeNode(resultA, new LinkedNode(60)), resultB));
+		assertTrue(equalsLNDatas(c.removeNode(resultA, new LinkedNode(20)), resultB));
+		resultA = createLinkedList(10,20,30,40,50);
+		resultB = createLinkedList(10,20,40,50);
+		assertTrue(equalsLNDatas(c.removeNode(resultA, new LinkedNode(30)), resultB));
+		resultA = createLinkedList(10,20,30,40,50);
+		resultB = createLinkedList(10,20,30,50);
+		assertTrue(equalsLNDatas(c.removeNode(resultA, new LinkedNode(40)), resultB));
+		resultA = createLinkedList(10,20,30,40,50);
+		resultB = createLinkedList(10,20,30,40);
+		assertTrue(equalsLNDatas(c.removeNode(resultA, new LinkedNode(50)), resultB));
+		resultA = createLinkedList(10,20,30,40,50);
+		resultB = createLinkedList(10,20,30,40,50);
+		assertTrue(equalsLNDatas(c.removeNode(resultA, new LinkedNode(60)), resultB));
 	}
 	public LinkedNode createLinkedList(int... datas){
 		LinkedNode n = new LinkedNode(datas[0]);
